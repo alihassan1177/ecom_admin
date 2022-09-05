@@ -1,2 +1,2 @@
-email : admin@admin.com
-password : ali123
+email : thealihassan.dev@gmail.com
+password : @yuriboyka12

@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input,
+  textarea {
+    @apply border focus:border-blue-600 p-3 w-full;
+  }
+
+  input,
+  textarea,
+  button {
+    @apply rounded-sm;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-green-600 py-3 px-6 transition-colors text-white font-semibold focus:bg-green-700 hover:bg-green-700;
+  }
+  .msg {
+    @apply text-sm font-semibold transition-opacity opacity-0 text-white rounded-sm absolute left-1/2 -translate-x-1/2 top-6 py-3 px-6;
+  }
+  .msg.success {
+    @apply bg-green-500 opacity-100;
+  }
+  .msg.error {
+    @apply bg-red-500 opacity-100;
+  }
+}

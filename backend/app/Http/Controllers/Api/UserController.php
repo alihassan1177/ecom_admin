@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        $validate = Validator::make($request->all(), [
+        $validate = Validator::make($request->json()->all(), [
             "name" => "required|min:6",
             "email" => "required|email",
             "password" => "required|min:6"
@@ -26,24 +26,26 @@ class UserController extends Controller
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
         $token = $user->createToken('MyApp')->accessToken;
-        return response()->json(["token"=> $token, "user"=> $user->name]);
+        return response()->json(["token"=> $token, "name"=> $user->name, "email" => $user->email]);            
     }
 
     public function login(Request $request)
     {
-        $validate = Validator::make($request->all(), [
+        $validate = Validator::make($request->json()->all(), [
             "email" => "required|email",
             "password" => "required|min:6"
         ]);
 
         if ($validate->fails()) {
-            return response()->json(["error" => $validate->errors()->all()], 422);
+            return response()->json(["error" => $validate->errors()->all()], 401);
         }
 
-        if (Auth::attempt(["email"=>$request['email'], "password" => $request["password"]])) {
+        if (Auth::attempt(["email"=>$request->json()->all()['email'], "password" => $request->json()->all()['password']])) {
             $user = Auth::user();
             $token = $user->createToken('MyApp')->accessToken;
-            return response()->json(["token"=> $token, "user"=> $user->name]);            
+            return response()->json(["token"=> $token, "name"=> $user->name, "email" => $user->email]);            
+        }else{
+            return response()->json(["error"=>["User Credentials does not match"]], 401);
         }
     }
 }
