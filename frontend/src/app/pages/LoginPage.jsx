@@ -1,9 +1,12 @@
+import React from "react";
 import LoginForm from "../components/Form/LoginForm";
 
-export default function LoginPage() {
+const LoginPage = () => {
   return (
     <main className="min-h-screen grid place-items-center">
       <LoginForm />
     </main>
   );
-}
+};
+
+export default LoginPage;

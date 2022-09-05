@@ -1,7 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import { api } from "../../utils/Api";
 
-export default function LoginForm() {
+const LoginForm = React.memo(() => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -20,7 +21,7 @@ export default function LoginForm() {
       }
     }
   }
-
+  console.log("Hello");
   return (
     <>
       <div
@@ -75,4 +76,6 @@ export default function LoginForm() {
       </form>
     </>
   );
-}
+});
+
+export default LoginForm;
