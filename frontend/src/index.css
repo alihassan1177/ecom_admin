@@ -28,4 +28,10 @@
   .msg.error {
     @apply bg-red-500 opacity-100;
   }
+  .nav-link {
+    @apply px-10 py-2 font-semibold border-y-blue-700 border-y text-white block hover:bg-white hover:text-blue-700 transition-colors;
+  }
+  .nav-link.active {
+    @apply bg-white text-blue-700;
+  }
 }

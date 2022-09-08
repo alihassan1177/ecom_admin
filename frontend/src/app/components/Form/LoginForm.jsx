@@ -1,11 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { api } from "../../utils/Api";
+import { UserContext } from "../../context/UserContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-const LoginForm = React.memo(() => {
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   async function login() {
     try {
@@ -14,14 +19,15 @@ const LoginForm = React.memo(() => {
         "/login",
         JSON.stringify({ email: email, password: password })
       );
-      console.log(response.data);
+      sessionStorage.setItem("user", JSON.stringify(response.data));
+      setUser(response.data);
+      navigate("/");
     } catch (error) {
       if (error.response) {
         setErrors(error.response.data.error);
       }
     }
   }
-  console.log("Hello");
   return (
     <>
       <div
@@ -76,6 +82,6 @@ const LoginForm = React.memo(() => {
       </form>
     </>
   );
-});
+};
 
 export default LoginForm;
