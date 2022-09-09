@@ -16,7 +16,7 @@ const LoginForm = () => {
     try {
       setErrors(["Login Successful"]);
       const response = await api.post(
-        "/login",
+        "/loginAdmin",
         JSON.stringify({ email: email, password: password })
       );
       sessionStorage.setItem("user", JSON.stringify(response.data));

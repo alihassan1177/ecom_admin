@@ -16,16 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return User::all();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return User::all();
+// });
 
 
-// Route::post("/register", [UserController::class, "register"]);
+Route::post("/register", [UserController::class, "register"]);
 Route::post("/login", [UserController::class, "login"]);
+// Route::post("/registerAdmin", [UserController::class, "registerAdmin"]);
+Route::post("/loginAdmin", [UserController::class, "loginAdmin"]);
 
 Route::group(["middleware"=>"auth:api"], function(){
-    Route::get("/users", function(){
-        return User::all();
+    // Only Admin Routes
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::get("/users", function(){
+                return User::all();
+        });
     });
+    
 });
