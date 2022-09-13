@@ -6,33 +6,40 @@ export default function Header() {
       <nav className="flex sm:flex-col sm:justify-start gap-4">
         <h2 className="font-bold">Dashboard</h2>
         <ul>
-          <li>
-            <NavLink to="/" className="nav-link">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/products" className="nav-link">
-              Products
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/posts" className="nav-link">
-              Posts
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/customers" className="nav-link">
-              Customers
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/settings" className="nav-link">
-              Settings
-            </NavLink>
-          </li>
+          {links.map((link, index) => {
+            return (
+              <li key={index}>
+                <NavLink to={link.path} className="nav-link">
+                  {link.name}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </header>
   );
 }
+
+const links = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Products",
+    path: "/products",
+  },
+  {
+    name: "Posts",
+    path: "/posts",
+  },
+  {
+    name: "Customers",
+    path: "/customers",
+  },
+  {
+    name: "Settings",
+    path: "/settings",
+  },
+];
