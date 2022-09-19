@@ -29,9 +29,45 @@
     @apply bg-red-500 opacity-100;
   }
   .nav-link {
-    @apply px-10 py-2 font-semibold border-y-blue-700 border-y text-white block hover:bg-white hover:text-blue-700 transition-colors;
+    @apply pl-5 pr-10 py-2 font-semibold flex items-center gap-1 text-white block hover:bg-blue-800 transition-colors;
   }
   .nav-link.active {
-    @apply bg-white text-blue-700;
+    @apply bg-blue-700 text-white;
+  }
+  .main-heading {
+    @apply font-bold text-3xl;
+  }
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\CommentController;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,9 +26,22 @@ Route::group(["middleware"=>"auth:api"], function(){
         Route::post("/product/create", [ProductController::class, "create"]);
         Route::post("/product/delete/{id}", [ProductController::class, "delete"]);
         Route::post("/product/update/{id}", [ProductController::class, "update"]);
+        // Gallery Routes
+        Route::post('/images/create', [GalleryController::class, "create"]);
+        Route::post('/images/delete/{id}', [GalleryController::class, "delete"]);
+        // Post Routess
+        Route::post('/posts/create', [BlogController::class, "create"]);
+        Route::post("/product/update/{id}", [BlogController::class, "update"]);
+        Route::post('/posts/delete/{id}', [BlogController::class, "delete"]);
     });
     
 });
 
+// Public Routes
 Route::get("/categories",[CategoryController::class, "index"]);
+Route::get("/images",[GalleryController::class, "index"]);
 Route::get("/products",[ProductController::class, "index"]);
+Route::get("/posts",[BlogController::class, "index"]);
+Route::get("/comments", [CommentController::class, "index"]);
+
+

@@ -14,11 +14,11 @@ const LoginForm = () => {
 
   async function login() {
     try {
-      setErrors(["Login Successful"]);
       const response = await api.post(
         "/loginAdmin",
         JSON.stringify({ email: email, password: password })
       );
+      setErrors(["Login Successful"]);
       sessionStorage.setItem("user", JSON.stringify(response.data));
       setUser(response.data);
       navigate("/");
@@ -45,7 +45,7 @@ const LoginForm = () => {
           login();
         }}
         id="loginForm"
-        className="flex flex-col bg-slate-200 gap-3 rounded p-6 max-w-md w-full"
+        className="flex flex-col bg-slate-100 gap-3 rounded p-6 max-w-md w-full"
       >
         <h1 className="font-bold text-blue-500 text-2xl">
           Login to your Account
