@@ -9,9 +9,17 @@ export default function Header() {
 
   return (
     <header className="shadow-lg">
-      <nav className="flex items-center container justify-between lg:relative gap-6">
-        <NavLink className="py-3" to="/">
-          <img className="w-14" src={Logo} alt="" />
+      <nav className="flex items-center container justify-between lg:relative gap-20">
+        <NavLink className="py-3 block" to="/">
+          <div className="flex gap-2 items-center">
+            <img className="w-14" src={Logo} alt="Logo" />
+            <div className="hidden flex-col md:flex text-black">
+              <h2 style={{ lineHeight: "1.1" }} className="font-bold text-3xl">
+                KingsDen
+              </h2>
+              <p className="text-sm">Men's Clothing Brand</p>
+            </div>
+          </div>
         </NavLink>
         <ul
           className={`${
@@ -29,13 +37,8 @@ export default function Header() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/latest" className="nav-link">
-              New Arrival
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/products" className="nav-link">
-              Categories
+              Products
             </NavLink>
           </li>
           <li>
@@ -87,7 +90,7 @@ export default function Header() {
 function SearchBar({ search }) {
   return (
     <input
-      type="text"
+      type="search"
       placeholder="Search"
       className={`${
         search
