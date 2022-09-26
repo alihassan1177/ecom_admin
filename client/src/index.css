@@ -15,11 +15,10 @@
 
 @layer components {
   .container {
-    max-width: 1168px !important;
     @apply mx-auto px-4;
   }
   .btn {
-    @apply px-6 py-3 text-lg hover:bg-gray-800 transition-colors font-semibold;
+    @apply px-8 py-3 text-lg hover:bg-gray-800 transition-colors font-semibold;
   }
   .primary {
     @apply bg-gray-900 text-white;
@@ -31,7 +30,7 @@
   .nav-link {
     @apply px-4 py-8 block lg:py-4 text-gray-600 hover:text-black font-semibold;
   }
-  .nav-link {
+  .nav-link.active {
     @apply text-black;
   }
   .footer-link {
@@ -39,5 +38,14 @@
   }
   .footer-link.active {
     @apply text-white;
+  }
+  .main-heading {
+    @apply text-center font-bold text-4xl;
+  }
+  .sidebar-link {
+    @apply py-3 px-7 text-sm hover:bg-black hover:text-white transition-colors;
+  }
+  .sidebar-link.active {
+    @apply bg-black text-white;
   }
 }
