@@ -1,8 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  * {
+    font-family: "Poppins", sans-serif;
+  }
+
   input,
   textarea {
     @apply border focus:border-blue-600 p-3 w-full;
@@ -12,6 +18,10 @@
   textarea,
   button {
     @apply rounded-sm;
+  }
+
+  td {
+    @apply text-center;
   }
 }
 
@@ -29,7 +39,7 @@
     @apply bg-red-500 opacity-100;
   }
   .nav-link {
-    @apply pl-5 pr-10 py-2 font-semibold flex items-center gap-1 text-white block hover:bg-blue-800 transition-colors;
+    @apply py-3 text-xl font-semibold flex items-center gap-1 text-white hover:bg-blue-800;
   }
   .nav-link.active {
     @apply bg-blue-700 text-white;
@@ -37,20 +47,26 @@
   .main-heading {
     @apply font-bold text-3xl;
   }
+  .line {
+    @apply w-6 rounded-sm h-[3px] bg-white;
+  }
 }
 
 .loader {
-  border: 16px solid #f3f3f3;
+  --size: 50px;
+  --width: 8px;
+  --speed: 500ms;
+  border: var(--width) solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border-top: var(--width) solid rgb(30 64 175);
+  width: var(--size);
+  height: var(--size);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
+  -webkit-animation: spin var(--speed) linear infinite; /* Safari */
+  animation: spin var(--speed) linear infinite;
 }
 
 /* Safari */
@@ -69,5 +85,11 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .hide {
+    display: none;
   }
 }

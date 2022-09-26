@@ -1,3 +1,10 @@
+import MainLayout from "../MainLayout";
+import { PageTitle } from "../../components/Page";
+
 export default function HomePage() {
-  return <h1>Homepage</h1>;
+  return (
+    <MainLayout>
+      <PageTitle>Dashboard</PageTitle>
+    </MainLayout>
+  );
 }
