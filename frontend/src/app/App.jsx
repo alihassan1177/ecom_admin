@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import { UserContext } from "./context/UserContext";
 import { useContext } from "react";
 import LoginPage from "./pages/LoginPage";
-import Homepage from "./pages/Dashboard/Homepage";
-import ProductsPage from "./pages/Products";
+import HomePage from "./pages/home/Home";
+import ProductPage from "./pages/product/Product";
 
 export default function App() {
   const { user } = useContext(UserContext);
@@ -15,8 +15,8 @@ export default function App() {
           <Route path="/" element={<LoginPage />} />
         ) : (
           <>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductPage />} />
           </>
         )}
       </Routes>
