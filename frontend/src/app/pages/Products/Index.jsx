@@ -37,27 +37,44 @@ export default function ProductsPage() {
             <TableHead>
               <TableRow>
                 <TableCell>Product</TableCell>
-                <TableCell align="right">Product Code</TableCell>
-                <TableCell align="right">Product Desc</TableCell>
-                <TableCell align="right">Product Image</TableCell>
+                <TableCell align="left">Product Code</TableCell>
+                <TableCell align="left">Product Category</TableCell>
+                <TableCell align="left">Product Desc</TableCell>
+                <TableCell align="left">Product Image</TableCell>
+                <TableCell align="left">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {products.map((row) => (
+              {products.map((row, index) => (
                 <TableRow
-                  key={row.product_name}
+                  className="even:bg-slate-100"
+                  key={index}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
                     {row.product_name}
                   </TableCell>
-                  <TableCell align="right">{row.product_code}</TableCell>
-                  <TableCell align="right">{row.product_desc}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="left">{row.product_code}</TableCell>
+                  <TableCell align="left">{row.product_cat}</TableCell>
+                  <TableCell align="left">{row.product_desc}</TableCell>
+                  <TableCell align="left">
                     <img
                       src={`${BASE_APP_URL}storage/${row.product_img}`}
                       alt={row.product_name}
+                      style={{
+                        width: "100%",
+                        height: "100px",
+                        objectFit: "cover",
+                      }}
                     />
+                  </TableCell>
+                  <TableCell align="left">
+                    <button className="p-3 hover:opacity-75 transition-opacity bg-red-600 text-white font-semibold">
+                      Delete
+                    </button>
+                    <button className="p-3 hover:opacity-75 transition-opacity bg-blue-600 text-white font-semibold">
+                      Edit
+                    </button>
                   </TableCell>
                 </TableRow>
               ))}
