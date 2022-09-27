@@ -9,6 +9,10 @@
     font-family: "Poppins", sans-serif;
   }
 
+  body {
+    @apply overflow-hidden;
+  }
+
   input,
   textarea {
     @apply border focus:border-blue-600 p-3 w-full;
@@ -21,7 +25,11 @@
   }
 
   td {
-    @apply text-center;
+    @apply text-center border-x;
+  }
+
+  tr + tr {
+    @apply border-t;
   }
 }
 

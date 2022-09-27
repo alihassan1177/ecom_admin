@@ -4,6 +4,7 @@ import { useContext } from "react";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/home/Home";
 import ProductPage from "./pages/product/Product";
+import CreateProduct from "./pages/product/Create";
 
 export default function App() {
   const { user } = useContext(UserContext);
@@ -16,9 +17,8 @@ export default function App() {
         ) : (
           <>
             <Route path="/" element={<HomePage />} />
-            <Route path="/products" element={<ProductPage />}>
-              <Route path="create" element={<h1>Hello</h1>} />
-            </Route>
+            <Route path="/products" element={<ProductPage />} />
+            <Route path="/products/create" element={<CreateProduct />} />
           </>
         )}
       </Routes>

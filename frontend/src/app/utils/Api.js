@@ -22,3 +22,22 @@ export const getDataFromApi = async (URL, userToken) => {
     }
   }
 };
+
+export const sendDataToApi = async (URL, userToken, data) => {
+  try {
+    const response = await api.post(URL, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
+      data: data,
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.error);
+    }
+  }
+};

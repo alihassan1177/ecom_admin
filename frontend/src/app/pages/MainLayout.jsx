@@ -4,7 +4,7 @@ export default function MainLayout({ children }) {
   return (
     <div className="flex">
       <Header />
-      <main className="w-full">{children}</main>
+      <main className="w-full overflow-y-scroll h-screen">{children}</main>
     </div>
   );
 }

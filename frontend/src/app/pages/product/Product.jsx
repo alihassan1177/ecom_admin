@@ -25,7 +25,7 @@ export default function ProductPage() {
         <header className="flex mb-4 items-center gap-1 justify-between flex-wrap">
           <h2 className="font-semibold text-3xl">All Products</h2>{" "}
           <Link
-            className="btn-primary flex items-center gap-2 rounded"
+            className="btn-primary hide flex items-center gap-2 rounded"
             to="/products/create"
           >
             <span>Create New Product</span> <HiPlus className="text-lg" />
